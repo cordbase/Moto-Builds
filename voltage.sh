@@ -37,4 +37,4 @@ export WITH_GAPPS=true
 export TARGET_ENABLE_BLUR=true
 export UCLAMP_FEATURE_ENABLED=true
 
-lunch lineage_rhode-bp1a-userdebug && mka bacon
+brunch devon-userdebug
