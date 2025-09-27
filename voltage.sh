@@ -34,7 +34,7 @@ cd ../../..
 export BUILD_USERNAME=Himanshu
 export BUILD_HOSTNAME=crave
 
-source build/envsetup.sh
+. build/envsetup.sh
 
 export WITH_GMS=true
 export TARGET_BOOT_ANIMATION_RES=1080
