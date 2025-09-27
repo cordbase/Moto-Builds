@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# cleanup
+rm -rf device/motorola/devon
+rm -rf device/motorola/hawao
+rm -rf device/motorola/rhode
+rm -rf device/motorola/sm6225-common
+rm -rf vendor/motorola/devon
+rm -rf vendor/motorola/hawao
+rm -rf vendor/motorola/rhode
+rm -rf vendor/motorola/sm6225-common
+rm -rf kernel/motorola/sm6225
+rm -rf hardware/motorola
+
 # Init Rom Manifest
 repo init --depth=1 -u https://github.com/VoltageOS/manifest.git -b 16 --git-lfs
 
