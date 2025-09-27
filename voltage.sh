@@ -7,10 +7,10 @@ repo init --depth=1 -u https://github.com/VoltageOS/manifest.git -b 16 --git-lfs
 /opt/crave/resync.sh 
 
 # Device trees
-git clone --branch A16 https://github.com/SM6225-Motorola/device_motorola_devon.git device/motorola/devon
-git clone --branch A16 https://github.com/SM6225-Motorola/device_motorola_hawao.git device/motorola/hawao
-git clone --branch A16 https://github.com/SM6225-Motorola/device_motorola_rhode.git device/motorola/rhode
-git clone --branch A16 https://github.com/SM6225-Motorola/device_motorola_sm6225-common.git device/motorola/sm6225-common
+git clone --branch voltage-A16 https://github.com/cordbase/device_motorola_devon.git device/motorola/devon
+git clone --branch voltage-A16 https://github.com/cordbase/device_motorola_hawao.git device/motorola/hawao
+git clone --branch voltage-A16 https://github.com/cordbase/device_motorola_rhode.git device/motorola/rhode
+git clone --branch voltage-A16 https://github.com/cordbase/device_motorola_sm6225-common.git device/motorola/sm6225-common
 
 # Vendor trees
 git clone https://github.com/TheMuppets/proprietary_vendor_motorola_devon.git vendor/motorola/devon
@@ -28,54 +28,6 @@ git clone --branch A16 https://github.com/SM6225-Motorola/hardware_motorola.git 
 cd kernel/motorola/sm6225
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 cd ../../..
-
-# VoltageOS specific Patches
-# List of devices
-DEVICES=("devon" "rhode" "hawao")
-
-for DEVICE in "${DEVICES[@]}"; do
-    DEVICE_PATH="device/motorola/$DEVICE"
-    echo "Processing $DEVICE_PATH ..."
-
-    if [ ! -d "$DEVICE_PATH" ]; then
-        echo "Device tree $DEVICE_PATH not found. Skipping."
-        continue
-    fi
-
-    cd "$DEVICE_PATH" || continue
-
-    # Step 1: Rename lineage_<device>.mk to voltage_<device>.mk
-    MK_FILE="lineage_${DEVICE}.mk"
-    VOLT_FILE="voltage_${DEVICE}.mk"
-
-    if [ -f "$MK_FILE" ]; then
-        mv "$MK_FILE" "$VOLT_FILE"
-        echo "Renamed $MK_FILE → $VOLT_FILE"
-    else
-        echo "$MK_FILE not found. Skipping rename."
-    fi
-
-    # Step 2: Update AndroidProducts.mk
-    if [ -f AndroidProducts.mk ]; then
-        sed -i 's/lineage/voltage/g' AndroidProducts.mk
-        echo "Updated AndroidProducts.mk for $VOLT_FILE"
-    else
-        echo "AndroidProducts.mk not found in $DEVICE_PATH. Skipping."
-    fi
-
-    # Step 3: Verify
-    grep "voltage_${DEVICE}" AndroidProducts.mk >/dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        echo "$DEVICE successfully updated."
-    else
-        echo "Warning: voltage_${DEVICE} not found in AndroidProducts.mk"
-    fi
-
-    # Go back to ROM root
-    cd ../../../
-done
-
-echo "All devices processed."
 
 # Set up build environment
 export BUILD_USERNAME=Himanshu
