@@ -20,7 +20,7 @@ git clone https://github.com/TheMuppets/proprietary_vendor_motorola_rhode.git ve
 git clone https://github.com/TheMuppets/proprietary_vendor_motorola_sm6225-common.git vendor/motorola/sm6225-common
 
 # Kernel source
-git clone https://github.com/LineageOS/android_kernel_motorola_sm6225.git -b lineage-22.2 kernel/motorola/sm6225
+git clone --branch lineage-23.0 https://github.com/cordbase/DanceKernel.git kernel/motorola/sm6225
 
 # Hardware dependency
 git clone --branch A16 https://github.com/SM6225-Motorola/hardware_motorola.git hardware/motorola
