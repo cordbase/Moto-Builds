@@ -36,6 +36,15 @@ git clone --branch lineage-23.0 https://github.com/cordbase/DanceKernel.git kern
 # Hardware dependency
 git clone --branch A16 https://github.com/SM6225-Motorola/hardware_motorola.git hardware/motorola
 
+# MotoCamera (Thanks @Deivid21)
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotoSignatureApp.git vendor/motorola/MotoSignatureApp
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotorolaSettingsProvider.git vendor/motorola/MotorolaSettingsProvider
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotoPhotoEditor.git vendor/motorola/MotoPhotoEditor
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotCamera-common.git vendor/motorola/MotCamera-common
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotCamera4-bengal.git vendor/motorola/MotCamera4-bengal
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotCameraAI-common.git vendor/motorola/MotCameraAI-common
+git clone --branch android-15 https://gitlab.com/Deivid21/proprietary_vendor_motorola_MotCamera3AI-bengal.git vendor/motorola/MotCamera3AI-bengal
+
 # Add KSU next
 cd kernel/motorola/sm6225
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
