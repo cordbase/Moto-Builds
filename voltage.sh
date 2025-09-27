@@ -25,6 +25,11 @@ git clone --branch lineage-23.0 https://github.com/cordbase/DanceKernel.git kern
 # Hardware dependency
 git clone --branch A16 https://github.com/SM6225-Motorola/hardware_motorola.git hardware/motorola
 
+# Add KSU next
+cd kernel/motorola/sm6225
+curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
+cd ../../..
+
 # Set up build environment
 export BUILD_USERNAME=Himanshu
 export BUILD_HOSTNAME=crave
@@ -37,4 +42,4 @@ export WITH_GAPPS=true
 export TARGET_ENABLE_BLUR=true
 export UCLAMP_FEATURE_ENABLED=true
 
-brunch devon-userdebug
+brunch devon
