@@ -50,16 +50,15 @@ cd kernel/motorola/sm6225
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
 cd ../../..
 
-# Set up build environment
+# VoltageOS related (Los 22.1 Base id.93) Error fix
+sed -i 's/certificate: "com.android.tzdata.certificate.override",/\/\/ &/' system/timezone/apex/Android.bp
+
+# Variables
 export BUILD_USERNAME=Himanshu
 export BUILD_HOSTNAME=crave
 
+# Set up build environment
 . build/envsetup.sh
 
-export WITH_GMS=true
-export TARGET_BOOT_ANIMATION_RES=1080
-export WITH_GAPPS=true
-export TARGET_ENABLE_BLUR=true
-export UCLAMP_FEATURE_ENABLED=true
-
+# lunch && build
 brunch devon
