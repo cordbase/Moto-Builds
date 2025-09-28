@@ -22,7 +22,7 @@ repo init -u https://github.com/The-Clover-Project/manifest.git -b 16 --git-lfs
 git clone --branch clover-A16 https://github.com/cordbase/device_motorola_devon.git device/motorola/devon
 git clone --branch clover-A16 https://github.com/cordbase/device_motorola_hawao.git device/motorola/hawao
 git clone --branch clover-A16 https://github.com/cordbase/device_motorola_rhode.git device/motorola/rhode
-git clone --branch A16 https://github.com/cordbase/device_motorola_sm6225-common.git device/motorola/sm6225-common
+git clone --branch clover-A16 https://github.com/cordbase/device_motorola_sm6225-common.git device/motorola/sm6225-common
 
 # Vendor trees
 git clone https://github.com/TheMuppets/proprietary_vendor_motorola_devon.git vendor/motorola/devon
