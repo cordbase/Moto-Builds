@@ -84,4 +84,4 @@ export TARGET_BUILD_GAPPS=true
 make installclean
 
 # Lunch & Build
-lunch yaap_device-user && m yaap
+lunch yaap_rhode-user && m yaap
