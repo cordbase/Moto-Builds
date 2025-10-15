@@ -70,12 +70,15 @@ done
 
 echo -e "All patches processed!"
 
-# Variables
-export BUILD_USERNAME=Himanshu
-export BUILD_HOSTNAME=crave
-
 # Set up build environment
 source build/envsetup.sh
+
+# Variables
+export TZ=Asia/Kolkata
+export BUILD_USERNAME=Himanshu
+export BUILD_HOSTNAME=crave
+export YAAP_BUILDTYPE=HOMEMADE
+export TARGET_BUILD_GAPPS=true
 
 # clean Build
 make installclean
