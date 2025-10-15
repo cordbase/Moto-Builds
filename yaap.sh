@@ -79,6 +79,7 @@ export BUILD_USERNAME=Himanshu
 export BUILD_HOSTNAME=crave
 export YAAP_BUILDTYPE=HOMEMADE
 export TARGET_BUILD_GAPPS=true
+export TARGET_ENABLE_BLUR=false
 
 # clean Build
 make installclean
