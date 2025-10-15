@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # cleanup
+rm -rf prebuilts/clang/host/linux-x86
+rm -rf .repo/local_manifests
 rm -rf device/motorola
 rm -rf vendor/motorola
 rm -rf kernel/motorola
 rm -rf hardware/motorola
+
+# Device manifest
+mkdir -p .repo/local_manifests
+curl -L -o .repo/local_manifests/yaap.xml https://raw.githubusercontent.com/cordbase/local_manifest/moto/yaap.xml
 
 # Init Rom Manifest
 repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
