@@ -71,11 +71,12 @@ done
 echo -e "All patches processed!"
 
 # Final cleanup
-dirs=(
-    "hardware/google/graphics/common"
-)
+FILE="build/soong/ui/build/androidmk_denylist.go"
 
-rm -rf "${dirs[@]}"
+# Replace the denylist content with an empty array
+sed -i '/var androidmk_denylist \[\]string = \[/,/^]/c\var androidmk_denylist []string = []string{}' "$FILE"
+
+echo "androidmk_denylist is now empty."
 
 # Set up build environment
 source build/envsetup.sh
