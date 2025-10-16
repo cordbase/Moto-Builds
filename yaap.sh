@@ -71,7 +71,7 @@ done
 echo -e "All patches processed!"
 
 # Final cleanup
-rm -rf hardware/google/graphics/common/Android.mk
+rm -rf hardware/google
 
 # Set up build environment
 source build/envsetup.sh
