@@ -71,7 +71,41 @@ done
 echo -e "All patches processed!"
 
 # Final cleanup
-rm -rf hardware/google
+dirs=(
+    "art/"
+    "bionic/"
+    "bootable/"
+    "build/"
+    "cts/"
+    "dalvik/"
+    "developers/"
+    "development/"
+    "device/common/"
+    "device/generic/"
+    "device/google/"
+    "device/google_car/"
+    "device/sample/"
+    "frameworks/"
+    "hardware/google/"
+    "hardware/libhardware/"
+    "hardware/libhardware_legacy/"
+    "hardware/ril/"
+    "kernel/configs/"
+    "kernel/prebuilts/"
+    "kernel/tests/"
+    "libcore/"
+    "libnativehelper/"
+    "pdk/"
+    "platform_testing/"
+    "prebuilts/"
+    "sdk/"
+    "test/"
+    "tools/"
+    "trusty/"
+    "toolchain/"
+)
+
+rm -rf "${dirs[@]}"
 
 # Set up build environment
 source build/envsetup.sh
