@@ -76,7 +76,17 @@ FILE="build/soong/ui/build/androidmk_denylist.go"
 # Replace the denylist content with an empty array
 sed -i '/var androidmk_denylist \[\]string = \[/,/^]/c\var androidmk_denylist []string = []string{}' "$FILE"
 
-echo "androidmk_denylist is now empty."
+# Add the missing stub functions at the end of the file
+cat <<'EOF' >> "$FILE"
+
+func ignoreSomeAndroidMks(_ []string) []string {
+    return _ 
+}
+
+func blockAndroidMks(_ interface{}, _ []string) {}
+EOF
+
+echo "androidmk_denylist emptied and stub functions added"
 
 # Set up build environment
 source build/envsetup.sh
