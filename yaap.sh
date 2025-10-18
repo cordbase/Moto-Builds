@@ -74,7 +74,7 @@ echo -e "All patches processed!"
 FILE="build/soong/ui/build/androidmk_denylist.go"
 
 # Comment
-sed -i 's|^\(\s*"device/google/",\)|// \1|' "$FILE"
+sed -i 's|^\(\s*"hardware/google/",\)|// \1|' "$FILE"
 
 # Set up build environment
 source build/envsetup.sh
