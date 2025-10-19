@@ -29,9 +29,9 @@ git config --global user.email "cordbase@users.noreply.github.com"
 
 # List of patches: "<repo_path>|<commit_sha>|<remote_url>"
 PATCHES=(
-  "device/motorola/rhode|I68a51d79c02e0d3bb57a6ecff4488f8840461182|https://github.com/Tomoms/android_device_motorola_rhode"
-  "device/motorola/hawao|I68a51d79c02e0d3bb57a6ecff4488f8840461182|https://github.com/Tomoms/android_device_motorola_rhode"
-  "device/motorola/devon|I68a51d79c02e0d3bb57a6ecff4488f8840461182|https://github.com/Tomoms/android_device_motorola_rhode"
+  "device/motorola/rhode|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
+  "device/motorola/hawao|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
+  "device/motorola/devon|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
 )
 
 echo "[*] Applying all patches automatically..."
