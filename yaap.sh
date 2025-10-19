@@ -18,8 +18,6 @@ repo init -u https://github.com/yaap/manifest.git -b sixteen --git-lfs
 # Sync the repositories  
 /opt/crave/resync.sh 
 
-git clone --branch A16 https://github.com/SM6225-Motorola/hardware_motorola.git hardware/motorola
-
 # Add KSU next
 cd kernel/motorola/sm6225
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -
