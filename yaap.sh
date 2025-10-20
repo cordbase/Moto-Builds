@@ -70,6 +70,17 @@ done
 
 echo -e "All patches processed!"
 
+# remove telephony-ext from yaap vendor
+TARGET_FILE="vendor/yaap/config/packages.mk"
+if [ -f "$TARGET_FILE" ]; then
+    sed -i '/^[[:space:]]*telephony-ext[[:space:]]*\\$/d' "$TARGET_FILE"
+    sed -i '/^[[:space:]]*telephony-ext[[:space:]]*$/d' "$TARGET_FILE"
+    echo "Removed telephony-ext entries from PRODUCT_PACKAGES and PRODUCT_BOOT_JARS."
+else
+    echo "$TARGET_FILE not found."
+    exit 1
+fi
+
 # Set up build environment
 source build/envsetup.sh
 
