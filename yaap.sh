@@ -27,49 +27,6 @@ cd ../../..
 git config --global user.name "cordbase"
 git config --global user.email "cordbase@users.noreply.github.com"
 
-# List of patches: "<repo_path>|<commit_sha>|<remote_url>"
-PATCHES=(
-  "device/motorola/rhode|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
-  "device/motorola/hawao|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
-  "device/motorola/devon|e1bb6b3f57bad00f54de874a5579c2bef915ccd5|https://github.com/Tomoms/android_device_motorola_rhode"
-)
-
-echo "[*] Applying all patches automatically..."
-
-for entry in "${PATCHES[@]}"; do
-  IFS="|" read -r REPO_PATH COMMIT_SHA REMOTE_URL <<< "$entry"
-  echo -e "\n[*] Applying patch $COMMIT_SHA in $REPO_PATH"
-
-  # Clone repo if missing
-  if [ ! -d "$REPO_PATH" ]; then
-    echo "[*] Path $REPO_PATH not found, cloning..."
-    git clone --depth=1 "$REMOTE_URL" "$REPO_PATH"
-  fi
-
-  pushd "$REPO_PATH" > /dev/null
-
-  PATCH_URL="$REMOTE_URL/commit/$COMMIT_SHA.patch"
-
-  # Skip if already applied
-  if git log --oneline | grep -q "$COMMIT_SHA"; then
-    echo "[✔] Skipping $COMMIT_SHA (already applied)."
-    popd > /dev/null
-    continue
-  fi
-
-  echo "[*] Downloading patch from $PATCH_URL"
-  if curl -fsSL "$PATCH_URL" | git am -3; then
-    echo "[✔] Applied $COMMIT_SHA successfully."
-  else
-    echo "[!] Conflict detected for $COMMIT_SHA, aborting safely..."
-    git am --abort || true
-  fi
-
-  popd > /dev/null
-done
-
-echo -e "All patches processed!"
-
 # remove telephony-ext from yaap vendor
 TARGET_FILE="vendor/yaap/config/packages.mk"
 if [ -f "$TARGET_FILE" ]; then
@@ -79,6 +36,17 @@ if [ -f "$TARGET_FILE" ]; then
 else
     echo "$TARGET_FILE not found."
     exit 1
+fi
+
+# error
+TARGET_BP="hardware/qcom-caf/sm8250/display/libdebug/Android.bp"
+EXCLUDE_PATH='$(LOCAL_PATH)/../../../../out/soong/.intermediates/vendor/yaap/build/soong/generated_kernel_includes/gen/usr/include'
+
+if [ -f "$TARGET_BP" ]; then
+    sed -i "/srcs: \[\"debug_handler.cpp\"\],/a \    exclude_include_dirs: [\"$EXCLUDE_PATH\"]," "$TARGET_BP"
+    echo "Patched $TARGET_BP to exclude generated kernel includes."
+else
+    echo "$TARGET_BP not found."
 fi
 
 # Set up build environment
