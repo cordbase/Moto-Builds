@@ -28,6 +28,7 @@ git config --global user.name "cordbase"
 git config --global user.email "cordbase@users.noreply.github.com"
 
 rm -rf packages/apps/FMRadio
+rm -rf external/rust/crates
 
 # Set up build environment
 source build/envsetup.sh
