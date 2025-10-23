@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # cleanup
+rm -rf external
+rm -rf build/soong
+rm -rf kernel/prebuilts
 rm -rf prebuilts/clang/host/linux-x86
 rm -rf .repo/local_manifests
 rm -rf device/motorola
