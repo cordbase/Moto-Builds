@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # cleanup
+rm -rf packages
+rm -rf tools
+rm -rf system
 rm -rf bootable
 rm -rf external
 rm -rf build/soong
