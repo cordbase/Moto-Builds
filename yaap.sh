@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # cleanup
+rm -rf bootable
 rm -rf external
 rm -rf build/soong
 rm -rf kernel/prebuilts
