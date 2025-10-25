@@ -35,6 +35,9 @@ git config --global user.email "cordbase@users.noreply.github.com"
 
 rm -rf packages/apps/FMRadio
 rm -rf external/rust/crates
+rm -rf packages/modules/Bluetooth
+
+git clone https://github.com/LineageOS/android_packages_modules_Bluetooth.git -b lineage-21.0 packages/modules/Bluetooth
 
 # Set up build environment
 source build/envsetup.sh
